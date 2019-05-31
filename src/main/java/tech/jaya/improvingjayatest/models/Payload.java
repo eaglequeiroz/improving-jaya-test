@@ -3,20 +3,19 @@ package tech.jaya.improvingjayatest.models;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Data
 @Entity
 public class Payload {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String action;
-    private LocalDateTime created_at;
 
-    @ManyToOne
-    @JoinColumn(name = "issue", referencedColumnName = "id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "issue", referencedColumnName = "entity_id")
     private Issue issue;
 
 }

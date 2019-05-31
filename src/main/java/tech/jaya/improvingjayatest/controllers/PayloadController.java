@@ -3,10 +3,7 @@ package tech.jaya.improvingjayatest.controllers;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import tech.jaya.improvingjayatest.models.Payload;
 import tech.jaya.improvingjayatest.services.PayloadService;
 
@@ -28,6 +25,12 @@ public class PayloadController {
     public List<Payload> listAll() {
         return payloadService.listAll();
     }
+
+    @GetMapping("/{action}/{id}/events")
+    public Payload getByActionAndId(@PathVariable(name = "action") String action, @PathVariable(name = "id") Long id){
+        return payloadService.getByActionAndId(action,id);
+    }
+
 
     @PostMapping(consumes = {"application/x-www-form-urlencoded"})
     public Payload create(String payload) throws IOException {

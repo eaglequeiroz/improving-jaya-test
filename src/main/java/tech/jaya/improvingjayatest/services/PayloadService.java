@@ -18,10 +18,14 @@ public class PayloadService {
     }
 
     public List<Payload> listAll(){
-        return (List<Payload>) payloadRepository.findAll();
+        return payloadRepository.findAll();
     }
 
     public Payload create(Payload payload){
         return  payloadRepository.save(payload);
+    }
+
+    public Payload getByActionAndId(String action, Long id) {
+        return payloadRepository.findByActionAndIssueId(action,id);
     }
 }
