@@ -32,6 +32,7 @@ public class PayloadController {
     @PostMapping(consumes = {"application/x-www-form-urlencoded"})
     public Payload create(String payload) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.findAndRegisterModules();
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         objectMapper.configure(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES, false);
         Payload serializedObject = objectMapper.readValue(payload, Payload.class);

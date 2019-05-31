@@ -8,11 +8,10 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
-public class RegistryPackage {
+class Milestone {
 
     @Id
     private Long id;
 
-    private String name;
     private LocalDateTime created_at;
 }

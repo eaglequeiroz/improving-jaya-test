@@ -14,8 +14,12 @@ public class Payload {
     private String action;
 
     @ManyToOne
-    @JoinColumn(name = "registry_package", referencedColumnName = "id")
-    private RegistryPackage registry_package;
+    @JoinColumn(name = "issue", referencedColumnName = "id")
+    private Issue issue;
+
+    @ManyToOne
+    @JoinColumn(name = "milestone", referencedColumnName = "id")
+    private Milestone milestone;
 
 
 }
