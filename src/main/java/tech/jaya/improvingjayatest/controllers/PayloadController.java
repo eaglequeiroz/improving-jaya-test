@@ -27,8 +27,8 @@ public class PayloadController {
     }
 
     @GetMapping("/{action}/{id}/events")
-    public Payload getByActionAndId(@PathVariable(name = "action") String action, @PathVariable(name = "id") Long id){
-        return payloadService.getByActionAndId(action,id);
+    public Payload getByActionAndId(@PathVariable(name = "action") String action, @PathVariable(name = "id") Long id) {
+        return payloadService.getByActionAndId(action, id);
     }
 
 
@@ -38,7 +38,7 @@ public class PayloadController {
         objectMapper.findAndRegisterModules();
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         objectMapper.configure(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES, false);
-        Payload serializedObject = objectMapper.readValue(payload, Payload.class);
-        return payloadService.create(serializedObject);
+        Payload deserializedObject = objectMapper.readValue(payload, Payload.class);
+        return payloadService.create(deserializedObject);
     }
 }
